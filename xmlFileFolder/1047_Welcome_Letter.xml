@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<docdef version="5.1" bo-name="LACTransaction" bo-class="Th_158008374*_LACTransaction" styleset="158008373" numbering-format="1">
+    <interview-data/>
+    <template-edition channel="2" template="158008376">
+        <edition-content>
+            <sectionmap section="ReturnAddress" region="ReturnAddress"/>
+            <sectionmap section="BrandLogo" region="BrandLogo"/>
+            <sectionmap section="Footer" region="Footer"/>
+            <sectionmap section="Date" region="Date"/>
+            <sectionmap section="CustomerAddress" region="CustomerAddress"/>
+            <sectionmap section="BarCode" region="BarCode"/>
+            <sectionmap section="Body" region="Body"/>
+            <setproperty name="display-width">
+                <string>210mm</string>
+            </setproperty>
+        </edition-content>
+    </template-edition>
+    <section id="2" name="root">
+        <section id="3" name="ReturnAddress">
+            <fraglink id="1776178244" resid="158008667"/>
+        </section>
+        <section id="7" name="BrandLogo">
+            <fragselect id="36" name="External Content Link 1" type="url" url-end-point="CMS" no-results="ignore" multi-page-tiff="false" use-specified-dimensions="true" image-height="100px" image-width="200px">
+                <url>
+                    <string>158000570</string>
+                </url>
+            </fragselect>
+        </section>
+        <section id="12" name="Footer">
+            <frag id="13" name="Frag 14" type="text" no-match="error">
+                <edition id="15" name="Edition 16" withdrawn="False">
+                    <edition-content>
+                        <p xml:space="preserve" style="Body_Arial_10pt" align="right">Page <page-numbering value="current.page"/>
+ of <page-numbering value="total.envelope.pages"/>
+                    </p>
+                </edition-content>
+            </edition>
+        </frag>
+    </section>
+    <section id="17" name="Date">
+        <frag id="18" name="CurrentDate" type="text" no-match="error">
+            <edition id="20" name="Edition 21" withdrawn="False">
+                <edition-content>
+                    <p xml:space="preserve" style="Date">
+                        <var name="getSystemVariables.getCurrentDate" type="date" format="d MMMM yyyy" delete-groups=" "/>
+                    </p>
+                </edition-content>
+            </edition>
+        </frag>
+    </section>
+    <section id="22" name="CustomerAddress">
+        <fraglink id="267729588" resid="690585469">
+            <argvalue name="NamePrefix">
+                <var name="LACTransaction.PolicyholderDetails.NamePrefix" type="string"/>
+            </argvalue>
+            <argvalue name="FirstName">
+                <var name="LACTransaction.PolicyholderDetails.FirstName" type="string"/>
+            </argvalue>
+            <argvalue name="MiddleName">
+                <var name="LACTransaction.PolicyholderDetails.MiddleName" type="string"/>
+            </argvalue>
+            <argvalue name="LastName">
+                <var name="LACTransaction.PolicyholderDetails.LastName" type="string"/>
+            </argvalue>
+            <argvalue name="AddressLine1">
+                <var name="LACTransaction.PolicyholderDetails.Address.AddressLine1" type="string"/>
+            </argvalue>
+            <argvalue name="City">
+                <var name="LACTransaction.PolicyholderDetails.Address.City" type="string"/>
+            </argvalue>
+            <argvalue name="State">
+                <var name="LACTransaction.PolicyholderDetails.Address.State" type="string"/>
+            </argvalue>
+            <argvalue name="ZipCode">
+                <var name="LACTransaction.PolicyholderDetails.Address.ZipCode" type="string"/>
+            </argvalue>
+        </fraglink>
+    </section>
+    <section id="27" name="BarCode">
+        <frag id="1776178240" name="Bar Code" edit-groups="*" type="text" no-match="error">
+            <edition id="1776178241" name="Bar Code" withdrawn="False">
+                <edition-content>
+                    <p xml:space="preserve" style="Body">
+                        <advanced description="Not set" contentType="xml">
+                            <DATAMATRIXCODE>
+                                <Message>ABCDEFG2</Message>
+                                <ModuleWidth>0.75mm</ModuleWidth>
+                                <QuietZone>4mw</QuietZone>
+                                <Shape>force-none</Shape>
+                                <MINSIZE>16x16</MINSIZE>
+                                <MAXSIZE>16x16</MAXSIZE>
+                            </DATAMATRIXCODE>
+                        </advanced>
+                    </p>
+                </edition-content>
+            </edition>
+        </frag>
+    </section>
+    <section id="32" name="Body">
+        <logic id="1776178249">
+            <if id="1776178250" expression="LACTransaction.PolicyholderDetails.Address.State == &quot;ID&quot;">
+                <frag id="1776178247" name="Letter Heading" type="text" no-match="error">
+                    <edition id="1776178248" name="Letter Heading" withdrawn="False">
+                        <edition-content>
+                            <p xml:space="preserve" style="Letter_Subheading_Arial_14_Underline">State Verbiage</p>
+                        </edition-content>
+                    </edition>
+                </frag>
+            </if>
+        </logic>
+        <frag id="33" name="Body_Salutation" edit-groups="*" type="text" no-match="error">
+            <edition id="35" name="Edition 36" withdrawn="False">
+                <edition-content>
+                    <p xml:space="preserve" style="Salutation_Arial_14pt_Bold">Dear Mrs <var name="LACTransaction.PolicyholderDetails.FirstName" type="string" edit-groups="*"/>
+,                    <var name="getSystemVariables.getName" type="string" edit-groups="*"/>
+                </p>
+                <p xml:space="preserve" style="Letter_Subheading_Arial_12">
+                    <style name="Body_Colour_Inline">Welcome to the Canara ABCD Oriental Bank of Commerce Life family</style>xcvxcvxc</p>
+                <p xml:space="preserve" style="Body_Arial_10pt">We would like to congratulate you on purchasing ABCD Oriental Bank of Commerce Life Insurance Future Smart Plan. Please note that this is a ‘Regular Premium’ plan. This document is your policy contract and contains important information related to your policy. We would recommend that you read this document carefully to ascertain if the details mentioned are accurate.</p>
+                <p xml:space="preserve" style="Body_Arial_10pt"/>
+                <p xml:space="preserve" style="Body_Arial_10pt">We are confident that our product will meet your requirements, however in case the policy terms and conditions are not agreeable to you then you can opt for a cancellation and discontinue your policy. If you decide to opt for cancellation, we would request you to send back this policy contract along with the reason for non-acceptance within 1<b>5 days from receipt of this document.</b> In case you opt for cancellation within the said 15 days you will receive the Fund Value and any unallocated premium along with the charges deducted This amount will be paid subject to deduction of the proportionate risk related charges, stamp duty and medical expenses, if any. Please note that this facility is available only at the first instance, on receipt of the original policy pack, and will not apply to duplicate policy packs issued by the Company on your request.</p>
+            </edition-content>
+        </edition>
+    </frag>
+    <fraglink id="1776178242" resid="158008665"/>
+    <fraglink id="1776178243" resid="158008666"/>
+</section>
+</section>
+</docdef>

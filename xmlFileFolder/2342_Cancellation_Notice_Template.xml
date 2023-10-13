@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<docdef version="5.1" bo-name="LACTransaction" bo-class="Th_158008374*_LACTransaction" styleset="158008373" numbering-format="1">
+    <interview-data/>
+    <template-edition channel="2" template="158008376">
+        <edition-content>
+            <sectionmap section="ReturnAddress" region="ReturnAddress"/>
+            <sectionmap section="BrandLogo" region="BrandLogo"/>
+            <sectionmap section="Footer" region="Footer"/>
+            <sectionmap section="Date" region="Date"/>
+            <sectionmap section="CustomerAddress" region="CustomerAddress"/>
+            <sectionmap section="BarCode" region="BarCode"/>
+            <sectionmap section="Body" region="Body"/>
+            <setproperty name="display-width">
+                <string>210mm</string>
+            </setproperty>
+        </edition-content>
+    </template-edition>
+    <section id="2" name="root">
+        <section id="3" name="ReturnAddress">
+            <fraglink id="1776178244" resid="158008667"/>
+        </section>
+        <section id="7" name="BrandLogo">
+            <fragselect id="36" name="External Content Link 1" type="url" url-end-point="CMS" no-results="ignore" multi-page-tiff="false" use-specified-dimensions="true" image-height="100px" image-width="200px">
+                <url>
+                    <string>158000570</string>
+                </url>
+            </fragselect>
+        </section>
+        <section id="12" name="Footer">
+            <frag id="13" name="Frag 14" type="text" no-match="error">
+                <edition id="15" name="Edition 16" withdrawn="False">
+                    <edition-content>
+                        <p xml:space="preserve" style="Body_Arial_10pt" align="right">Page <page-numbering value="current.page"/>
+ of <page-numbering value="total.envelope.pages"/>
+                    </p>
+                </edition-content>
+            </edition>
+        </frag>
+    </section>
+    <section id="17" name="Date">
+        <frag id="18" name="CurrentDate" type="text" no-match="error">
+            <edition id="20" name="Edition 21" withdrawn="False">
+                <edition-content>
+                    <p xml:space="preserve" style="Date">
+                        <var name="getSystemVariables.getCurrentDate" type="date" format="d MMMM yyyy" delete-groups=" "/>
+                    </p>
+                </edition-content>
+            </edition>
+        </frag>
+    </section>
+    <section id="22" name="CustomerAddress">
+        <fraglink id="267729588" resid="690585469">
+            <argvalue name="NamePrefix">
+                <var name="LACTransaction.PolicyholderDetails.NamePrefix" type="string"/>
+            </argvalue>
+            <argvalue name="FirstName">
+                <var name="LACTransaction.PolicyholderDetails.FirstName" type="string"/>
+            </argvalue>
+            <argvalue name="MiddleName">
+                <var name="LACTransaction.PolicyholderDetails.MiddleName" type="string"/>
+            </argvalue>
+            <argvalue name="LastName">
+                <var name="LACTransaction.PolicyholderDetails.LastName" type="string"/>
+            </argvalue>
+            <argvalue name="AddressLine1">
+                <var name="LACTransaction.PolicyholderDetails.Address.AddressLine1" type="string"/>
+            </argvalue>
+            <argvalue name="City">
+                <var name="LACTransaction.PolicyholderDetails.Address.City" type="string"/>
+            </argvalue>
+            <argvalue name="State">
+                <var name="LACTransaction.PolicyholderDetails.Address.State" type="string"/>
+            </argvalue>
+            <argvalue name="ZipCode">
+                <var name="LACTransaction.PolicyholderDetails.Address.ZipCode" type="string"/>
+            </argvalue>
+        </fraglink>
+    </section>
+    <section id="27" name="BarCode">
+        <frag id="1776178240" name="Bar Code" edit-groups="*" type="text" no-match="error">
+            <edition id="1776178241" name="Bar Code" withdrawn="False">
+                <edition-content>
+                    <p xml:space="preserve" style="Body">
+                        <advanced description="Not set" contentType="xml">
+                            <DATAMATRIXCODE>
+                                <Message>ABCDEFG2</Message>
+                                <ModuleWidth>0.75mm</ModuleWidth>
+                                <QuietZone>4mw</QuietZone>
+                                <Shape>force-none</Shape>
+                                <MINSIZE>16x16</MINSIZE>
+                                <MAXSIZE>16x16</MAXSIZE>
+                            </DATAMATRIXCODE>
+                        </advanced>
+                    </p>
+                </edition-content>
+            </edition>
+        </frag>
+    </section>
+    <section id="32" name="Body">
+        <frag id="1136094671" name="Letter Heading" type="text" no-match="error">
+            <edition id="1776178239" name="Letter Heading" withdrawn="False">
+                <edition-content>
+                    <p xml:space="preserve" style="Letter_Subheading_Arial_14_Underline"/>
+                </edition-content>
+            </edition>
+        </frag>
+        <frag id="33" name="Body_Salutation" edit-groups="*" type="text" no-match="error">
+            <edition id="35" name="Edition 36" withdrawn="False">
+                <edition-content>
+                    <p xml:space="preserve" style="Letter_Subheading_Arial_14_Underline">
+                        <style name="Body_Colour_Inline">NOTICE OF NONRENEWAL OF INSURANCE</style>
+                    </p>
+                    <p xml:space="preserve" style="Salutation_Arial_14pt_Bold"/>
+                    <p xml:space="preserve" style="Salutation_Arial_14pt_Bold">Dear Mrs <var name="LACTransaction.PolicyholderDetails.FirstName" type="string" edit-groups="*"/>
+,</p>
+                    <p xml:space="preserve" style="Body_Arial_10pt"/>
+                    <p xml:space="preserve" style="Body_Arial_10pt">You are hereby notified in accordance with the terms and conditions of the abovementioned policy, and in accordance with law, that the above-mentioned policy will expire effective at and from the hour and date mentioned above and the policy will NOT be renewed.</p>
+                    <p xml:space="preserve" style="Body_Arial_10pt"/>
+                    <p xml:space="preserve" style="Salutation_Arial_14pt_Bold">PLEASE BE ADVISED THAT THIS NONRENEWAL IS BASED ON A BUSINESS DECISION BY THE COMPANY AND IS NOT INTENDED TO REFLECT NEGATIVELY ON YOUR INSURABILITY.</p>
+                    <p xml:space="preserve" style="Body_Arial_10pt"/>
+                    <p xml:space="preserve" style="Body_Arial_10pt">You should contact your producer concerning coverage through another insurer or your eligibility for coverage through our website.</p>
+                    <p xml:space="preserve" style="Body_Arial_10pt"/>
+                    <p xml:space="preserve" style="Body_Arial_10pt">For information that will assist you in shopping for coverage, you may contact the New Jersey Department of Banking and Insurance at 1-800-446-SHOP (7467) or visit the Department on the web at www.dobi.nj.gov.</p>
+                    <p xml:space="preserve" style="Body_Arial_10pt"/>
+                    <p xml:space="preserve" style="Salutation_Arial_14pt_Bold">YOU SHOULD SEEK REPLACEMENT COVERAGE WITHOUT DELAY. PLEASE CONTACT YOUR PRODUCER TO SECURE OTHER COVERAGE, OR IF YOU HAVE ANY QUESTIONS.</p>
+                </edition-content>
+            </edition>
+        </frag>
+        <fraglink id="1776178242" resid="158008665"/>
+        <fraglink id="1776178243" resid="158008666"/>
+    </section>
+</section>
+</docdef>

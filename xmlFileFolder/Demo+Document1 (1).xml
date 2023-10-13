@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<docdef bo-class="Th_157370137*_DataModel" bo-name="DataModel" numbering-format="1" styleset="157370507" version="5.1">
+    <interview-data/>
+    <template-edition channel="2" template="157938712">
+        <edition-content/>
+    </template-edition>
+    <section id="1998661776" name="root">
+        <section id="2" name="Document">
+            <frag id="1998661779" edit-groups="*" no-match="error">
+                <edition id="1998661780" withdrawn="False">
+                    <edition-content>
+                        <p xml:space="preserve">
+                            <image width="318px" height="159px" format="png" horizdpi="96" vertdpi="96" alt="Fromlogo" multi-page-tiff="false" checksum="379b340e">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
+                            </image>
+                        </p>
+                    </edition-content>
+                </edition>
+            </frag>
+            <frag id="1831453922" name="Fragment1" type="text" no-match="error">
+                <edition id="1065480541" name="Fragment1" withdrawn="False">
+                    <edition-content>
+                        <p xml:space="preserve"/>
+                        <p xml:space="preserve">SMartCOMM time for the next generation of customer communications. It�s time to scale the conversation.SmartCOMMTM helps enterprises deliver personalized, interactive communications via customers' preferred channels�and does so at tremendous scale. Designed for the business user, SmartCOMM helps to simplify and standardize processes leading to improved internal efficiency and increasing ROI. Vinoth</p>
+                        <p xml:space="preserve"/>
+                    </edition-content>
+                </edition>
+            </frag>
+            <frag id="1998661775" name="Fragment1" type="text" no-match="error">
+                <edition id="1575042254" name="Fragment1" withdrawn="False">
+                    <edition-content>
+                        <p xml:space="preserve"/>
+                        <p xml:space="preserve">CTS time for the next generation of customer communications. It�s time to scale the conversation.SmartCOMMTM helps enterprises deliver personalized, interactive communications via customers' preferred channels�and does so at tremendous scale. Designed for the business user, SmartCOMM helps to simplify and <b>standardize processes</b> leading to improved internal efficiency and increasing ROI.</p>
+                        <p xml:space="preserve"/>
+                    </edition-content>
+                </edition>
+            </frag>
+            <frag id="1062089207" name="Fragment2" type="text" no-match="error">
+                <edition id="752401329" name="Fragment2" withdrawn="False">
+                    <edition-content>
+                        <p xml:space="preserve"/>
+                        <p xml:space="preserve">Personalized, On-brand Customer Communications</p>
+                        <p xml:space="preserve">Manage Complexity</p>
+                        <p xml:space="preserve">Transform Communications into Conversations</p>
+                        <p xml:space="preserve">Interactive Communications for all Channels</p>
+                        <p xml:space="preserve">Interactive, On-demand and Batch</p>
+                        <p xml:space="preserve">Your Data, Your Content</p>
+                        <p xml:space="preserve">Deployment Flexibility to Lower Costs</p>
+                        <p xml:space="preserve">Business User Control</p>
+                        <p xml:space="preserve">Secure Customer Communications</p>
+                        <p xml:space="preserve">Faster Negotiations</p>
+                        <p xml:space="preserve">Increase customer satisfaction with communications that are highly-personal, on-brand and contextually relevant, delivered to the channels preferred by your customers.</p>
+                    </edition-content>
+                </edition>
+            </frag>
+        </section>
+    </section>
+</docdef>

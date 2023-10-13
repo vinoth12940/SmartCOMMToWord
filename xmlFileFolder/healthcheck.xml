@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<docdef version="5.1" bo-name="OfferLetter" bo-class="Th_150800020*_OfferLetter" styleset="150800001">
+    <template-edition channel="2" template="150800000">
+        <edition-content>
+            <sectionmap section="Body" region="Body"/>
+            <sectionmap section="Footer" region="Footer"/>
+        </edition-content>
+    </template-edition>
+    <template-edition channel="1" template="150800019">
+        <edition-content>
+            <sectionmap section="Body" region="Main Region"/>
+            <sectionmap section="Footer" region="Sidebar"/>
+        </edition-content>
+    </template-edition>
+    <section id="1" name="root">
+        <section id="33" name="Body">
+            <fraglink id="17" resid="150800018"/>
+            <frag id="5">
+                <edition id="6" withdrawn="False">
+                    <edition-content>
+                        <p xml:space="preserve" style="Heading1">Health Check</p>
+                        <p xml:space="preserve" style="Body">This a test document for <hyperlink>
+                            <display>
+                                <string>Smart Communications</string>
+                            </display>
+                            <ref>
+                                <string>https://www.smartcommunications.com/</string>
+                            </ref>
+                            <style>hyperlink</style>
+                        </hyperlink> and used to prove that the template authoring environment is working as expected. It is a very simple document, and shows a few features to prove that the system is working.</p>
+                </edition-content>
+            </edition>
+        </frag>
+        <frag id="7" edit-groups="*">
+            <edition id="8" withdrawn="False">
+                <edition-content>
+                    <p xml:space="preserve" style="Heading2">This is an example of a bullet list</p>
+                    <ulist bullet-char="SQUARE" style="BulletList">
+                        <listitem xml:space="preserve" style="ListItem" bodystyle="ListBody" labelstyle="ListLabelSymbol">Bullet list item one is very long and extends past the end of the line. Bullet list item one is very long and extends past the end of the line. Bullet list item one is very long and extends past the end of the line. </listitem>
+                        <listitem xml:space="preserve" style="ListItem" bodystyle="ListBody" labelstyle="ListLabelSymbol">Bullet list item two is short.</listitem>
+                    </ulist>
+                </edition-content>
+            </edition>
+        </frag>
+        <logic id="15">
+            <if id="16" expression="Contains(OfferLetter.Offeree.City, &quot;San Diego&quot;)">
+                <frag id="13" edit-groups="*">
+                    <edition id="14" withdrawn="False">
+                        <edition-content>
+                            <ulist bullet-char="SQUARE" style="BulletList">
+                                <listitem xml:space="preserve" style="ListItem" bodystyle="ListBody" labelstyle="ListLabelSymbol">This is the <style name="Highlight1">final item </style>in the list—it's actually a separate list, although in this case joins seamlessly to the list above.</listitem>
+                            </ulist>
+                        </edition-content>
+                    </edition>
+                </frag>
+            </if>
+        </logic>
+        <frag id="9" edit-groups="*">
+            <edition id="10" withdrawn="False">
+                <edition-content>
+                    <p xml:space="preserve" style="Heading3">This is an example of a Table</p>
+                    <p xml:space="preserve" style="Body">Tables in the template authoring environment can be very sophisticated, or just simple like this one.</p>
+                    <table style="TableCollapsedBorders" width="100%">
+                        <col width="33.333333333333336%"/>
+                        <col width="33.333333333333336%"/>
+                        <col width="33.333333333333336%"/>
+                        <tablebody>
+                            <row>
+                                <cell style="HeadingCell">
+                                    <p xml:space="preserve" style="Body">
+                                        <b>
+                                            <i>This is a title row</i>
+                                        </b>
+                                    </p>
+                                </cell>
+                                <cell style="HeadingCell">
+                                    <p xml:space="preserve" style="Body">
+                                        <b>
+                                            <i>This is title cell 2</i>
+                                        </b>
+                                    </p>
+                                </cell>
+                                <cell style="HeadingCell">
+                                    <p xml:space="preserve" style="Body">
+                                        <b>
+                                            <i>This is title cell 3</i>
+                                        </b>
+                                    </p>
+                                </cell>
+                            </row>
+                            <row>
+                                <cell style="BodyCell">
+                                    <p xml:space="preserve" style="Body">This is row 1</p>
+                                </cell>
+                                <cell style="BodyCell">
+                                    <p xml:space="preserve" style="Body">This is still row 1</p>
+                                </cell>
+                                <cell style="BodyCell">
+                                    <p xml:space="preserve" style="Body">This is row 1 again</p>
+                                </cell>
+                            </row>
+                            <row>
+                                <cell style="BodyCell">
+                                    <p xml:space="preserve" style="Body">This is row 2</p>
+                                </cell>
+                                <cell colspan="2" style="BodyCell">
+                                    <p xml:space="preserve" style="Body">This is still row two again and forms part of a merged cell</p>
+                                </cell>
+                            </row>
+                            <row>
+                                <cell style="BodyCell">
+                                    <p xml:space="preserve" style="Body">This is row 3</p>
+                                </cell>
+                                <cell style="BodyCell">
+                                    <p xml:space="preserve" style="Body">This is row 3</p>
+                                </cell>
+                                <cell style="BodyCell">
+                                    <p xml:space="preserve" style="Body">This is row 3 again</p>
+                                </cell>
+                            </row>
+                        </tablebody>
+                    </table>
+                </edition-content>
+            </edition>
+        </frag>
+        <logic id="28">
+            <if id="29" expression="OfferLetter.Reference.length &gt; 0">
+                <frag id="26" edit-groups="*">
+                    <edition id="27" withdrawn="False">
+                        <edition-content>
+                            <p xml:space="preserve" style="Heading4">Repeating Rows</p>
+                            <p xml:space="preserve" style="Body">The data for this template includes repeating elements:</p>
+                        </edition-content>
+                    </edition>
+                </frag>
+            </if>
+        </logic>
+        <logic id="24">
+            <foreach id="25" collection="OfferLetter.Reference" item="current_Reference">
+                <frag id="22" edit-groups="*">
+                    <edition id="23" withdrawn="False">
+                        <edition-content>
+                            <ulist bullet-char="SQUARE" style="BulletList">
+                                <listitem xml:space="preserve" style="ListItem" bodystyle="ListBody" labelstyle="ListLabelSymbol">
+                                    <var name="current_Reference_index" type="int" format="000" locale="default" edit-groups="*" hide-edit-groups="false" multi-line="false"/>
+                                    <var name="current_Reference.ReferenceName" type="string" edit-groups="*" hide-edit-groups="false" multi-line="false"/>
+,                                    <var name="current_Reference.ReferenceEmail" type="string" edit-groups="*" hide-edit-groups="false" multi-line="false"/>
+                                </listitem>
+                            </ulist>
+                        </edition-content>
+                    </edition>
+                </frag>
+            </foreach>
+        </logic>
+        <fraglink id="36" resid="150800178">
+            <argvalue name="Responsibilities">
+                <var name="OfferLetter.Job.Responsibilities" type="string"/>
+            </argvalue>
+            <argvalue name="DateOfBirth">
+                <var name="OfferLetter.Offeree.DateOfBirth" type="date"/>
+            </argvalue>
+        </fraglink>
+    </section>
+    <section id="30" name="Footer">
+        <fraglink id="37" resid="150800284">
+            <argvalue name="OfferLetter">
+                <var name="OfferLetter" type="Th_150800020*_OfferLetter"/>
+            </argvalue>
+        </fraglink>
+    </section>
+</section>
+</docdef>

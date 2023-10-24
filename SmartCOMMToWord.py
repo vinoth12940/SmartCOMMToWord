@@ -79,6 +79,10 @@ for xml_file in os.listdir(xmlFileFolder):
                         for j in range(len(table_data[i])):
                             table.cell(i, j).text = table_data[i][j]
                     table.style = 'Table Grid'
+                elif elem.tag == 'string':
+                    doc.add_paragraph(elem.text)
+                elif elem.tag == 'style':
+                    doc.add_paragraph(elem.text)                    
 
         # Save the Word document
-        doc.save(os.path.join(newWordDocFolder, os.path.splitext(xml_file)[0] + '.docx')) 
+        doc.save(os.path.join(newWordDocFolder, os.path.splitext(xml_file)[0] + '.docx'))

@@ -44,8 +44,19 @@ for xml_file in os.listdir(xmlFileFolder):
         for elem in root.iter():
             if elem.text:
                 if elem.tag == 'p':
-                    if 'style' in elem.attrib and 'Heading' in elem.attrib['style']:
-                        doc.add_heading(elem.text, int(elem.attrib['style'][-1]))
+                    if 'style' in elem.attrib:
+                        style_elem = elem.find('style')
+                        if style_elem is not None:
+                            style_value = style_elem.text
+                            style_name = elem.attrib['style']
+                            try:
+                                doc.add_paragraph(elem.text, style=style_name).add_run(style_value)
+                            except KeyError:
+                                print(f"Warning: Style '{style_name}' not found. Using default style instead.")
+                                doc.add_paragraph(elem.text)
+                        else:
+                            print("Warning: <style> element not found in <p> element. Using default style instead.")
+                            doc.add_paragraph(elem.text)
                     else:
                         doc.add_paragraph(elem.text)
                 elif elem.tag == 'ulist':
@@ -79,6 +90,10 @@ for xml_file in os.listdir(xmlFileFolder):
                         for j in range(len(table_data[i])):
                             table.cell(i, j).text = table_data[i][j]
                     table.style = 'Table Grid'
+                elif elem.tag == 'string':
+                    doc.add_paragraph(elem.text)
+                elif elem.tag == 'style':
+                    doc.add_paragraph(elem.text)
 
         # Save the Word document
         doc.save(os.path.join(newWordDocFolder, os.path.splitext(xml_file)[0] + '.docx'))

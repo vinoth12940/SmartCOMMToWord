@@ -35,7 +35,19 @@ for xml_file in os.listdir(xmlFileFolder):
         # Create a new Word document
         doc = docx.Document()
 
-        # Define a custom style for the hyperlink
+        # Define custom styles for the document
+        existing_styles = [s.name for s in doc.styles]
+        for style in root.findall('.//style'):
+            name = style.attrib.get('name')
+            if name in existing_styles:
+                doc.styles[name].delete()
+            if name and name not in existing_styles:
+                try:
+                    doc.styles.add_style(name, docx.enum.style.WD_STYLE_TYPE.PARAGRAPH)
+                except ValueError:
+                    pass
+
+        # Define the 'Hyperlink' style
         hyperlink_style = doc.styles.add_style('Hyperlink', docx.enum.style.WD_STYLE_TYPE.PARAGRAPH)
         hyperlink_style.font.color.rgb = docx.shared.RGBColor(0, 0, 255)
         hyperlink_style.font.underline = True
@@ -47,7 +59,11 @@ for xml_file in os.listdir(xmlFileFolder):
                     if 'style' in elem.attrib and 'Heading' in elem.attrib['style']:
                         doc.add_heading(elem.text, int(elem.attrib['style'][-1]))
                     else:
-                        doc.add_paragraph(elem.text)
+                        text = ''
+                        for child in elem.iter():
+                            if child.text:
+                                text += child.text
+                        doc.add_paragraph(text)
                 elif elem.tag == 'ulist':
                     for li in elem.iter('listitem'):
                         doc.add_paragraph(li.text, style='List Bullet')
@@ -81,4 +97,4 @@ for xml_file in os.listdir(xmlFileFolder):
                     table.style = 'Table Grid'
 
         # Save the Word document
-        doc.save(os.path.join(newWordDocFolder, os.path.splitext(xml_file)[0] + '.docx')) 
+        doc.save(os.path.join(newWordDocFolder, os.path.splitext(xml_file)[0] + '.docx'))

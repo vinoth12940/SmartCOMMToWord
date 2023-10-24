@@ -4,6 +4,9 @@ from xml.etree import ElementTree
 import base64
 from io import BytesIO
 from PIL import Image
+import xml.etree.ElementTree as ET
+from docx import Document
+from docx.shared import Cm
 
 # Define the input and output directories
 xmlFileFolder = '/Users/vinothrajalingam/Desktop/Python/xmlFileFolder'
@@ -14,7 +17,7 @@ if not os.path.exists(newWordDocFolder):
     os.makedirs(newWordDocFolder)
 
 # Define a function to add images to the document
-def add_image(image_data, width, height, format, checksum):
+def add_image(doc, image_data, width, height, format, checksum):
     # Decode the Base64-encoded image data
     image_bytes = base64.b64decode(image_data)
     image_stream = BytesIO(image_bytes)
@@ -48,40 +51,6 @@ for xml_file in os.listdir(xmlFileFolder):
                 elif elem.tag == 'ulist':
                     for li in elem.iter('listitem'):
                         doc.add_paragraph(li.text, style='List Bullet')
-                elif elem.tag == 'table':
-                    tablebody = elem.find('tablebody')
-                    if tablebody is not None:
-                        colgroup = elem.find('colgroup')
-                        if colgroup is not None:
-                            table = doc.add_table(rows=1, cols=len(colgroup))
-                            table.style = 'Table Grid'
-                            for i, col in enumerate(colgroup):
-                                table.columns[i].width = int(col.attrib['width'][:-1]) * 7.2
-                            for row in tablebody.iter('row'):
-                                table.add_row()
-                                for i, cell in enumerate(row.iter('cell')):
-                                    cell_text = cell.find('p').text
-                                    if cell_text is not None:
-                                        table.cell(-1, i).text = cell_text
-                                    else:
-                                        table.cell(-1, i).text = ''
-                        else:
-                            # Add a default width for each column in the table
-                            num_cols = len(list(tablebody.find('row/cell')))
-                            table = doc.add_table(rows=1, cols=num_cols)
-                            table.style = 'Table Grid'
-                            for col in table.columns:
-                                col.width = int(1.0 * 7.2)
-                            for row in tablebody.iter('row'):
-                                table.add_row()
-                                for i, cell in enumerate(row.iter('cell')):
-                                    cell_text = cell.find('p').text
-                                    if cell_text is not None:
-                                        table.cell(-1, i).text = cell_text
-                                    else:
-                                        table.cell(-1, i).text = ''
-                    else:
-                        print('Warning: Table has no tablebody element')
                 elif elem.tag == 'hyperlink':
                     ref = elem.find('ref')
                     if ref is not None:
@@ -94,7 +63,22 @@ for xml_file in os.listdir(xmlFileFolder):
                     format = elem.attrib['format']
                     checksum = elem.attrib['checksum']
                     base64_data = elem.text
-                    add_image(base64_data, width, height, format, checksum)
+                    add_image(doc, base64_data, width, height, format, checksum)
+                elif elem.tag == 'table':
+                    table_data = []
+                    for row_elem in elem.findall(".//row"):
+                        row_data = []
+                        for cell_elem in row_elem.findall(".//cell"):
+                            cell_text = cell_elem.find(".//p").text
+                            row_data.append(cell_text)
+                        table_data.append(row_data)
+
+                    # Add the table to the document
+                    table = doc.add_table(rows=len(table_data), cols=len(table_data[0]))
+                    for i in range(len(table_data)):
+                        for j in range(len(table_data[i])):
+                            table.cell(i, j).text = table_data[i][j]
+                    table.style = 'Table Grid'
 
         # Save the Word document
         doc.save(os.path.join(newWordDocFolder, os.path.splitext(xml_file)[0] + '.docx'))
